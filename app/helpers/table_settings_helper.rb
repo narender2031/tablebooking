@@ -1,0 +1,2 @@
+module TableSettingsHelper
+end

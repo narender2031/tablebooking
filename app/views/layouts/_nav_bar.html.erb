@@ -1,0 +1,163 @@
+<div class="top_nav">
+<div class="nav_menu nav-white">
+    <nav>
+        <div class="nav toggle">
+            <% if active == "Table" || active == "Table" %> 
+                <button type="button" class="btn btn-primary modal-open" data-toggle="modal" data-target="#exampleModal">
+                Create a Table
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        
+                            <div class="modal-body">
+                                <div class="createTableForm">
+                                    <div class="tableForm">
+                                        <%= form_for @table, url: create_table_path do |f| %>
+                                            <fieldset>
+                                                <div class="table_number">
+                                                    <div class="table_section">
+                                                        <%= f.text_field :section, class:"createTable", placeholder: "section e.g Indoor/Outdoor" %>
+                                                    </div>
+                                                    <div class="table_num">
+                                                        <%= f.text_field :table_number, class:"createTable", placeholder: "Tbale number" %>
+                                                    </div>    
+                                                    <div class="table_status">
+                                                        <%= f.text_field :status, class:"createTable", placeholder: "status" %>
+                                                    </div>    
+                                                    <div class="table_seats">
+                                                        <%= f.text_field :seats, class:"createTable", placeholder: "seats" %>
+                                                    </div>  
+                                                    <center>  
+                                                        <%= f.submit "Create", class:"SubmitButton"%>
+                                                    </center>    
+                                                </div>
+                                            </fieldset>    
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            <% end %> 
+            <% if active == "Clander" || active == "Clander" %>
+               <div class="right">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <button type="button" class="btn btn-primary modal-open" data-toggle="modal" data-target="#exampleModal1">
+                                Create Reservation
+                            </button>  
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    
+                                        <div class="modal-body">
+                                            <div class="createTableForm">
+                                                <div class="tableForm">
+                                                    <%= form_for @reservation, url: reservation_path do |f| %>
+                                                        <fieldset>
+                                                            <div class="Select">
+                                                                <div class="reservation_type">
+                                                                    <select id="select_reserv">
+                                                                        <option value="WalkIn">WalkIn</option>
+                                                                        <option value="Online">Online</option>
+                                                                        <option value="Phone">Phone</option>
+                                                                    </select>
+                                                                    <%= f.hidden_field :reservations_type, class:"", id:"reserv_type", value:"WalkIn"%>
+                                                                </div>
+                                                            </div>
+                                                            <div class="Select">
+                                                                <div class="guests">
+                                                                    <select id="select_guests">
+                                                                        <option value="1">One</option>
+                                                                        <option value="2">Two</option>
+                                                                        <option value="3">Three</option>
+                                                                        <option value="4">Four</option>
+                                                                        <option value="5">Sive</option>
+                                                                        <option value="6">Six</option>
+                                                                        <option value="7">Seven</option>
+                                                                        <option value="8">Eight</option>
+                                                                        <option value="9">Nine</option>
+                                                                        <option value="10">Ten</option>
+                                                                    </select>
+                                                                    <%= f.hidden_field :number_of_guests, class:"", id:"reserv_Guest", value:"1"%>
+                                                                </div>
+                                                            </div>
+                                                            <div class="Select">
+                                                                <div class="guests">
+                                                                    <select id="select_table">
+                                                                        <% @table.each do |t| %>
+                                                                            <option value="<%= t.table_number%>" ><%= t.table_number %></option>
+                                                                        <% end %> 
+                                                                    </select>
+                                                                    <%= f.hidden_field :table_number, class:"", id:"table_num", value:@table[0].table_number %>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ContactInfo"> 
+                                                                <div class="info">
+                                                                    <div class="Mobile">
+                                                                        <%= f.phone_field :guest_mobile_number, class:"", placeholder:"Phone Number"%>
+                                                                    </div>
+                                                                    <div class="Email">
+                                                                        <%= f.email_field :guest_email, class:"", placeholder: "Email"%>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <div class="container">
+                                                                
+                                                                    <div class='col-md-12-col-sm-6'>
+                                                                        <div class="form-group">
+                                                                            <div class='input-group date' id='datetimepicker1'>
+                                                                                <input type='text' class="form-control" />
+                                                                                <span class="input-group-addon">
+                                                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <script type="text/javascript">
+                                                                        $(function () {
+                                                                            $('#datetimepicker1').datetimepicker();
+                                                                        });
+                                                                    </script>
+                                                                
+                                                            </div>
+                                                            <%= f.submit "Submit" %>
+                                                        </fieldset>
+                                                    <% end %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            <% end %> 
+        </div>
+            
+    </nav>
+</div>
+</div>
+<script>
+    $('#select_reserv').on('change', function() {
+        console.log( this.value );
+        var Reservation = this.value
+        $('#reserv_type').val(this.value)
+    })
+    $('#select_guests').on('change', function() {
+        console.log( this.value );
+        var Reservation = this.value
+        $('#reserv_Guest').val(this.value)
+    })
+    $('#select_table').on('change', function() {
+        console.log( this.value );
+        var Reservation = this.value
+        $('#table_num').val(this.value)
+    })
+</script>    

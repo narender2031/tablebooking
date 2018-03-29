@@ -1,0 +1,32 @@
+.text-postion{
+    text-align: center;
+}
+.modal-open{
+    margin-top: -10px;
+    position: relative;
+    left: 10px;
+    background: none;
+    color: #444;
+    border: 1px solid #444;
+}
+.modal-content{
+    float: right !important;
+    width: 82% !important;
+}
+.createTable{
+    width: 100%;
+    padding: 6px;
+    color: #444;
+    border: 1px solid #444;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.SubmitButton{
+    width: 40%;
+    padding: 7px;
+    color: #444;
+    background: no-repeat;
+}
+.TableEmpty{
+    text-align: center;
+}

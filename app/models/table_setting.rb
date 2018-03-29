@@ -1,0 +1,2 @@
+class TableSetting < ApplicationRecord
+end

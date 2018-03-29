@@ -1,0 +1,82 @@
+<body class="dash-body nav-sm" id="dash">
+    <div class="container body">
+        <div class="main_container">
+            <%= render partial: "layouts/left_col", :locals => {active: "Table"} %>
+            <%= render partial: "layouts/nav_bar", :locals => {active: "Table"} %>
+            <div class="right_col" >
+                <div class="row">
+                    <% if @tables.blank? %>
+                        <p class="TableEmpty">No Tbale yet!</p>
+                    <% else %>
+                        <% @tables.each do |table| %>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h5 class="">Table number <%= table.table_number%></h5>
+                                    </div>
+                                    <div class="x_content">
+                                        <div class="table_status">
+                                            <div class="current_status">
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="left">
+                                                        <p class="">Status</p>
+                                                    </div>  
+                                                </div>    
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="right">
+                                                        <p class="text-postion"><%= table.status%></p>
+                                                    </div>    
+                                                </div>    
+                                            </div>
+                                        </div>   
+                                        <div class="TableSection">
+                                            <div class="TableLocation">
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="left">
+                                                        <p class="">Section</p>
+                                                    </div>
+                                                </div>    
+                                                <div class="col-md-6 col-sm-6 col-xs-6">    
+                                                    <div class="right">
+                                                        <p class="text-postion"><%= table.section%></p>
+                                                    </div>
+                                                </div>    
+                                            </div>
+                                        </div>
+                                        <div class="NoOfSeats">
+                                            <div class="TableSeats">
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="left">
+                                                        <p class="">Seats</p>
+                                                    </div>
+                                                </div>    
+                                                <div class="col-md-6 col-sm-6 col-xs-6">    
+                                                    <div class="right">
+                                                        <p class="text-postion"><%= table.seats %></p>
+                                                    </div> 
+                                                </div> 
+                                            </div>     
+                                        </div>
+                                        <div class="settingsTable">
+                                            <div class="tableS">
+                                                <div class="left">
+                                                    <a href="edit/<%= table.id%>">Edit</a>
+                                                      
+                                                </div>
+                                                <div class="right">
+                                                <a  rel="nofollow" data-method="delete" class="delete_snap" href="/delete_table/<%= table.id%>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        <% end %>    
+                    <% end %>    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</body>    
